@@ -12,3 +12,15 @@ export async function getChampionImageURLs() {
   }
   return newUrls;
 }
+
+export function shuffle(array) {
+  let currentIndex = array.length;
+  let randomIndex, temp;
+  while (--currentIndex > 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    temp = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temp;
+  }
+  return array;
+}
