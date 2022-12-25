@@ -5,10 +5,11 @@ export async function getChampionImageURLs() {
   const data = (await response.json()).data;
   const newUrls = [];
   for (const champ in data) {
-    const champId = data[champ].id;
-    newUrls.push(
-      `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champId}_0.jpg`
-    );
+    newUrls.push({
+      name: data[champ].name,
+      key: data[champ].key,
+      src: `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${data[champ].id}_0.jpg`,
+    });
   }
   return newUrls;
 }
