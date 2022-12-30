@@ -2,12 +2,12 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import Board from './Board';
 import Header from './Header';
-import useChampionImageURLs from '../hooks/useChampionImageURLs';
+import useChampionData from '../hooks/useChampionData';
 import { shuffle } from '../utils';
 
 function Game() {
   const cardsPerLevel = 3;
-  const urls = useChampionImageURLs();
+  const championData = useChampionData();
   const [level, setLevel] = useState(1);
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
@@ -15,13 +15,13 @@ function Game() {
   const [currentCards, setCurrentCards] = useState([]);
 
   const getNewCards = () => {
-    const shuffledImageUrls = shuffle(urls);
+    const shuffledImageUrls = shuffle(championData);
     setCurrentCards(shuffledImageUrls.slice(0, cardsPerLevel * level));
   };
 
   useEffect(() => {
     getNewCards();
-  }, [urls, level]);
+  }, [championData, level]);
 
   const handleClick = (clickedCard) => {
     if (selectedCards.includes(clickedCard)) {

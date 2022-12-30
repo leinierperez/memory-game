@@ -1,4 +1,4 @@
-export async function getChampionImageURLs() {
+export async function getChampionData() {
   const url =
     'https://ddragon.leagueoflegends.com/cdn/12.19.1/data/en_US/champion.json';
   const response = await fetch(url);
